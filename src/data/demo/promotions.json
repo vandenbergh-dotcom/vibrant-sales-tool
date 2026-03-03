@@ -1,0 +1,163 @@
+[
+  {
+    "id": "PROMO-NAT-001",
+    "name": "Spring Spice Festival",
+    "type": "national",
+    "scope": "all_stores",
+    "productIds": [
+      "TRS-GSP-001", "TRS-GSP-002", "TRS-GSP-003", "TRS-GSP-004", "TRS-GSP-005",
+      "TRS-GSP-006", "TRS-GSP-007", "TRS-GSP-008", "TRS-GSP-009", "TRS-GSP-010",
+      "TRS-WSP-001", "TRS-WSP-002", "TRS-WSP-003", "TRS-WSP-004", "TRS-WSP-005",
+      "TRS-WSP-006", "TRS-WSP-007", "TRS-WSP-008"
+    ],
+    "discountType": "percentage",
+    "discountValue": 15,
+    "discountDescription": "15% off all TRS spices",
+    "startDate": "2026-03-01",
+    "endDate": "2026-03-31",
+    "isActive": true
+  },
+  {
+    "id": "PROMO-NAT-002",
+    "name": "Snack Attack - Buy 3 Get 1 Free",
+    "type": "national",
+    "scope": "all_stores",
+    "productIds": [
+      "COF-SNK-001", "COF-SNK-002", "COF-SNK-003", "COF-SNK-004", "COF-SNK-005",
+      "COF-SNK-006", "COF-SNK-007", "COF-SNK-008", "COF-SNK-009", "COF-SNK-010",
+      "COF-SNK-011", "COF-SNK-012", "COF-SNK-013", "COF-SNK-014", "COF-SNK-015",
+      "COF-SNK-016", "COF-SNK-017", "COF-SNK-018", "COF-SNK-019", "COF-SNK-020"
+    ],
+    "discountType": "buy_x_get_y",
+    "discountValue": 25,
+    "discountDescription": "Buy 3 cases of any Cofresh products, get 1 free (25% effective discount)",
+    "startDate": "2026-03-01",
+    "endDate": "2026-04-15",
+    "isActive": true
+  },
+  {
+    "id": "PROMO-NAT-003",
+    "name": "Pulse Power - Bulk Savings",
+    "type": "national",
+    "scope": "all_stores",
+    "productIds": [
+      "TRS-PUL-002", "TRS-PUL-004", "TRS-PUL-006", "TRS-PUL-008",
+      "EE-PUL-002", "EE-PUL-004"
+    ],
+    "discountType": "percentage",
+    "discountValue": 10,
+    "discountDescription": "10% off all pulses in 2kg bags",
+    "startDate": "2026-03-15",
+    "endDate": "2026-04-30",
+    "isActive": true
+  },
+  {
+    "id": "PROMO-NAT-004",
+    "name": "New TRS Premium Ghee - Introductory Offer",
+    "type": "national",
+    "scope": "all_stores",
+    "productIds": [
+      "TRS-OTH-001"
+    ],
+    "discountType": "percentage",
+    "discountValue": 20,
+    "discountDescription": "20% introductory discount on TRS Pure Butter Ghee",
+    "startDate": "2026-03-01",
+    "endDate": "2026-03-31",
+    "isActive": true
+  },
+  {
+    "id": "PROMO-NAT-005",
+    "name": "Ghee Case Deal",
+    "type": "national",
+    "scope": "all_stores",
+    "productIds": [
+      "TRS-OTH-001", "EE-OIL-001", "EE-OIL-002"
+    ],
+    "discountType": "volume_discount",
+    "discountValue": 15,
+    "discountDescription": "Buy 10+ cases of any ghee products at 15% off wholesale price",
+    "startDate": "2026-03-01",
+    "endDate": "2026-05-31",
+    "isActive": true
+  },
+  {
+    "id": "PROMO-REG-001",
+    "name": "Midlands East End Atta Special",
+    "type": "regional",
+    "scope": "regional",
+    "regions": ["West Midlands", "East Midlands"],
+    "productIds": [
+      "EE-FLR-001", "EE-FLR-002"
+    ],
+    "discountType": "percentage",
+    "discountValue": 5,
+    "discountDescription": "Extra 5% off East End Chapati Flour in the Midlands",
+    "startDate": "2026-03-01",
+    "endDate": "2026-04-30",
+    "isActive": true
+  },
+  {
+    "id": "PROMO-REG-002",
+    "name": "London Cofresh Party Pack",
+    "type": "regional",
+    "scope": "regional",
+    "regions": ["London"],
+    "productIds": [
+      "COF-SNK-002", "COF-SNK-004", "COF-SNK-017"
+    ],
+    "discountType": "percentage",
+    "discountValue": 20,
+    "discountDescription": "20% off all Cofresh 500g sharing bags in London stores",
+    "startDate": "2026-03-01",
+    "endDate": "2026-03-31",
+    "isActive": true
+  },
+  {
+    "id": "PROMO-REG-003",
+    "name": "Northern Value Rice Deal",
+    "type": "regional",
+    "scope": "regional",
+    "regions": ["North West", "Yorkshire"],
+    "productIds": [
+      "TRS-RCE-001", "TRS-RCE-002", "EE-RCE-001", "EE-RCE-002", "EE-RCE-003", "EE-RCE-004"
+    ],
+    "bonusProductId": "TRS-PUL-004",
+    "discountType": "buy_x_get_y",
+    "discountValue": 0,
+    "discountDescription": "Buy 2 cases of any rice, get a free case of TRS Mung Dal 2kg",
+    "startDate": "2026-03-15",
+    "endDate": "2026-05-15",
+    "isActive": true
+  },
+  {
+    "id": "PROMO-PROD-001",
+    "name": "TRS Canned Goods Starter Pack",
+    "type": "product",
+    "scope": "new_stockists",
+    "productIds": [
+      "TRS-CAN-001", "TRS-CAN-002", "TRS-CAN-003"
+    ],
+    "discountType": "percentage",
+    "discountValue": 25,
+    "discountDescription": "25% off first order of TRS canned goods for stores not currently stocking them",
+    "startDate": "2026-03-01",
+    "endDate": "2026-06-30",
+    "isActive": true
+  },
+  {
+    "id": "PROMO-PROD-002",
+    "name": "Fudco Nut Promotion",
+    "type": "product",
+    "scope": "all_stores",
+    "productIds": [
+      "FUD-NUT-001", "FUD-NUT-002", "FUD-NUT-003", "FUD-NUT-004", "FUD-NUT-005"
+    ],
+    "discountType": "volume_discount",
+    "discountValue": 15,
+    "discountDescription": "15% off when ordering 5+ cases of mixed Fudco nuts",
+    "startDate": "2026-03-01",
+    "endDate": "2026-04-30",
+    "isActive": true
+  }
+]

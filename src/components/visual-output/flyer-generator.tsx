@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useCallback } from "react";
+import { useEffect, useCallback, useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { FlyerTemplate } from "./flyer-template";
 import { LanguageSelector } from "./language-selector";
@@ -26,7 +26,7 @@ export function FlyerGenerator({ recommendations, storeName }: FlyerGeneratorPro
   } = useFlyerGenerator();
 
   // Combine all recommended products for the flyer (top priority first)
-  const allProducts: RecommendedProduct[] = [
+  const allProducts: RecommendedProduct[] = useMemo(() => [
     ...recommendations.promotions,
     ...recommendations.winBack,
     ...recommendations.crossSell,
@@ -36,21 +36,32 @@ export function FlyerGenerator({ recommendations, storeName }: FlyerGeneratorPro
       const priorityOrder = { high: 0, medium: 1, low: 2 };
       return priorityOrder[a.priority] - priorityOrder[b.priority];
     })
-    .slice(0, 12);
+    .slice(0, 12), [recommendations]);
 
   const handleLanguageChange = useCallback(async (lang: typeof currentLanguage) => {
     setCurrentLanguage(lang);
 
     if (lang !== "en") {
-      await translateProducts(
-        allProducts.map(p => p.productId),
-        allProducts.map(p => p.productName),
-        lang
-      );
+      // Collect product names AND promotion texts for translation
+      const ids: string[] = [];
+      const texts: string[] = [];
+
+      for (const p of allProducts) {
+        ids.push(p.productId);
+        texts.push(p.productName);
+
+        // Also translate promotion discount text
+        if (p.promotion) {
+          ids.push(`promo_${p.productId}`);
+          texts.push(p.promotion.discount);
+        }
+      }
+
+      await translateProducts(ids, texts, lang);
     }
 
-    // Regenerate image after translation
-    setTimeout(() => generateImage(), 200);
+    // Regenerate image after translation - wait for React to re-render
+    setTimeout(() => generateImage(), 600);
   }, [allProducts, setCurrentLanguage, translateProducts, generateImage]);
 
   // Auto-generate image when recommendations load

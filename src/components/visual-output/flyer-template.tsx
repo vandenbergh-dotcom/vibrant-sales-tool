@@ -1,6 +1,7 @@
 import React from "react";
 import { RecommendedProduct, Language, Brand } from "@/lib/types";
 import { BRAND_COLORS } from "@/lib/constants";
+import { getProductImageUrl } from "@/lib/product-images";
 
 interface FlyerTemplateProps {
   storeName: string;
@@ -83,6 +84,7 @@ export const FlyerTemplate = React.forwardRef<HTMLDivElement, FlyerTemplateProps
         }}>
           {products.slice(0, 12).map((product) => {
             const brandColors = BRAND_COLORS[product.brand] || BRAND_COLORS["TRS"];
+            const imageUrl = getProductImageUrl(product.productId);
             return (
               <div key={product.productId} style={{
                 backgroundColor: "white",
@@ -91,11 +93,11 @@ export const FlyerTemplate = React.forwardRef<HTMLDivElement, FlyerTemplateProps
                 boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
                 textAlign: "center",
               }}>
-                {/* Product color block */}
+                {/* Product image or color block */}
                 <div style={{
                   backgroundColor: brandColors.primary,
-                  padding: "20px 12px",
-                  minHeight: "80px",
+                  padding: imageUrl ? "8px" : "20px 12px",
+                  minHeight: "100px",
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
@@ -115,26 +117,57 @@ export const FlyerTemplate = React.forwardRef<HTMLDivElement, FlyerTemplateProps
                       fontWeight: "bold",
                       padding: "2px 8px",
                       borderRadius: "99px",
+                      zIndex: 2,
                     }}>
                       {product.promotion.discount}
                     </div>
                   )}
-                  <div style={{
-                    color: brandColors.text,
-                    fontSize: "13px",
-                    fontWeight: "600",
-                    lineHeight: "1.3",
-                  }}>
-                    {getProductName(product)}
-                  </div>
+
+                  {imageUrl ? (
+                    <img
+                      src={imageUrl}
+                      alt={product.productName}
+                      style={{
+                        width: "120px",
+                        height: "120px",
+                        objectFit: "contain",
+                        borderRadius: "8px",
+                        backgroundColor: "white",
+                        padding: "4px",
+                      }}
+                      crossOrigin="anonymous"
+                    />
+                  ) : (
+                    <div style={{
+                      color: brandColors.text,
+                      fontSize: "13px",
+                      fontWeight: "600",
+                      lineHeight: "1.3",
+                    }}>
+                      {getProductName(product)}
+                    </div>
+                  )}
                 </div>
 
-                {/* Brand + info */}
+                {/* Product name + brand info */}
                 <div style={{ padding: "8px 10px 10px" }}>
                   <div style={{
                     fontSize: "11px",
+                    fontWeight: "600",
+                    color: "#1a1a1a",
+                    lineHeight: "1.3",
+                    minHeight: "28px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}>
+                    {getProductName(product)}
+                  </div>
+                  <div style={{
+                    fontSize: "10px",
                     color: brandColors.primary,
                     fontWeight: "600",
+                    marginTop: "2px",
                   }}>
                     {product.brand}
                   </div>

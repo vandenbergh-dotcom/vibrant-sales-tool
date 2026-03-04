@@ -47,13 +47,29 @@ export function useFlyerGenerator() {
     setGenerating(true);
 
     try {
-      // Wait a tick for the DOM to update with translations
-      await new Promise(resolve => setTimeout(resolve, 100));
+      // Wait for DOM update + images to load
+      await new Promise(resolve => setTimeout(resolve, 500));
+
+      // Wait for all images in the flyer to load
+      const images = flyerRef.current.querySelectorAll("img");
+      if (images.length > 0) {
+        await Promise.all(
+          Array.from(images).map(
+            (img) =>
+              new Promise<void>((resolve) => {
+                if (img.complete) return resolve();
+                img.onload = () => resolve();
+                img.onerror = () => resolve(); // fallback if image fails
+              })
+          )
+        );
+      }
 
       const dataUrl = await toPng(flyerRef.current, {
         quality: 0.95,
         pixelRatio: 2,
         backgroundColor: "#FFF8E7",
+        cacheBust: true,
       });
 
       setImageData(dataUrl);

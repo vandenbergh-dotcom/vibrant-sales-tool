@@ -27,6 +27,7 @@ export function ProductRecCard({ product, type }: ProductRecCardProps) {
         <CardContent className="p-4 flex-1">
           <div className="flex items-start gap-3">
             <ProductImage
+              productId={product.productId}
               brand={product.brand}
               category={product.category}
               name={product.productName}
